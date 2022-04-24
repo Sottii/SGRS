@@ -3,5 +3,6 @@
         "website"
     ],
     "python.testing.unittestEnabled": false,
-    "python.testing.pytestEnabled": true
+    "python.testing.pytestEnabled": true,
+    "cSpell.language": "en,pt,pt-BR"
 }
