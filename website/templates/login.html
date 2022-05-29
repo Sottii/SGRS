@@ -2,7 +2,7 @@
 {% block title %}Login{% endblock %}
 
 {%block conteudo%}
-<form method="POST">
+<form action="{{ url_for('auth.login') }}" method="POST">
 
     <br>
     
