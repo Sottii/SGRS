@@ -9,56 +9,50 @@
         
         <h1 align="center">Cadastrar Sala</h1>
         <div class="form-group">
-            <label for="numero">Número</label>
-            <input type="text" class="form-control" id="numero" name="numero" placeholder="Número da sala"/>
+            <label for="numero">Número/Nome</label>
+            <input type="text" class="form-control" id="numero" name="numero" placeholder="Número/Nome da sala"/>
         </div>
 
-        <div class="form-group">
-            <label for="email">Capacidade</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Capacidade máxima"/>
-        </div>   
+        <br>
 
-        <br />
-
-        <div class="row">
             <div class="col">
-                <div class="container  ">  
-                    <div class="form-check">
-                        <h6>Tipo de sala</h6>
-                        <input class="form-check-input" type="radio" name="tipo-sala" id="tipo-sala-a">
-                        <label class="form-check-label" for="tipo-sala-a">
-                            Sala de aula
-                        </label>
+                <div class="row">
+                    <div class="container  ">  
+                        <div class="form-check">
+                            <h6>Tipo de sala</h6>
+                            <input class="form-check-input" type="radio" name="tipo-sala" id="tipo-sala-a">
+                            <label class="form-check-label" for="tipo-sala-a">
+                                Sala de aula
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="tipo-sala" id="tipo-sala-l">
+                            <label class="form-check-label" for="tipo-sala-l">
+                                Laboratório
+                            </label>
+                        </div> 
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="tipo-sala" id="tipo-sala-l">
-                        <label class="form-check-label" for="tipo-sala-l">
-                            Laboratório
-                        </label>
-                    </div> 
-                </div>
-
-                <br />
-
-                <div class="container  ">  
-                    <div class="form-check">
-                        <h6>Bloco</h6>
-                        <input class="form-check-input" type="radio" name="bloco" id="bloco1">
-                        <label class="form-check-label" for="bloco1">
-                            Bloco 1
-                        </label>
+            </div></div>
+            <br>
+            <div class="col">   
+                <div class="row">
+                    <div class="container  ">  
+                        <div class="form-check">
+                            <h6>Bloco</h6>
+                            <input class="form-check-input" type="radio" name="bloco" id="bloco1">
+                            <label class="form-check-label" for="bloco1">
+                                Bloco 1
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="bloco" id="bloco2">
+                            <label class="form-check-label" for="bloco2">
+                                Bloco 2
+                            </label>
+                        </div> 
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="bloco" id="bloco2">
-                        <label class="form-check-label" for="bloco2">
-                            Bloco 2
-                        </label>
-                    </div> 
-                </div>
-            </div>
-
-            <br />
-
+            </div></div>
+            <br>
             <div class="col">
                 <div class="container  ">  
                     <div class="form-check">
@@ -75,10 +69,10 @@
                         </label>
                     </div> 
                 </div>
-            
-                <br />  
-            
-                <div class="container  ">  
+            </div>
+            <br>
+            <div class="col">   
+                <div class="container  ">
                     <div class="form-check">
                         <h6>Tipo de quadro</h6>
                         <input class="form-check-input" type="radio" name="tipo-quadro" id="tipo-quadro-l">
@@ -99,10 +93,11 @@
                         </label>
                     </div>
                 </div>
-
-                <br />
-
-                <div class="container  ">  
+            </div>
+            <br>
+            <div class="col">
+                <div></div>
+                <div class="container  ">
                     <div class="form-check">
                         <h6>Status</h6>
                         <input class="form-check-input" type="radio" name="status" id="status-v">
@@ -124,10 +119,8 @@
                     </div>
                 </div>
             </div>
-            
-            <br /> 
-
-            <div class="col">
+            <br>
+            <div class="col-auto">
                 <div class="container  ">  
                     <div class="form-check">
                         <h6>Projetor</h6>
@@ -143,10 +136,10 @@
                         </label>
                     </div>
                 </div>
-
-                <br />
-
-                <div class="container  ">  
+            </div>
+            <br>
+            <div class="col-auto">
+                <div class="container  ">
                     <div class="form-check">
                         <h6>Ar-condicionado</h6>
                         <input class="form-check-input" type="radio" name="ar-condicionado" id="ar-condicionado-p">
@@ -162,13 +155,15 @@
                     </div>
                 </div>
             </div>
-        </div>
+                
+            
 
         <br />
         <br />
 
         <button type="submit" class="btn btn-primary">Cadastrar sala</button>
-
+        <br />
+        <br />
     </div>
 </form>
 {% endblock %}

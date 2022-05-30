@@ -3,6 +3,13 @@
 import email
 from flask import Blueprint, flash, render_template, redirect, url_for, request
 
+from website import views
+from .models import Usuario
+from werkzeug.security import generate_password_hash, check_password_hash
+from . import db
+
+
+
 auth = Blueprint('auth', __name__)
 
 @auth.route('/login', methods=['POST', 'GET'])
@@ -37,6 +44,10 @@ def sign_up():
         elif len(email) < 6:
             flash('Email muito curto.', category='error')
         else:
-            flash('Bem vindo!', category='success')
+            new_user = Usuario(email=email, nome=nome, senha=generate_password_hash(senha1, method='sha256'))
+            db.session.add(new_user)
+            db.session.commit()
+            flash('Bem vindo! \nAgora faça login.', category='success')
+            return redirect(url_for('views.agenda'))
 
     return render_template('sign-up.html')
