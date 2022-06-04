@@ -1,14 +1,12 @@
 #5 coisas relacionadas à autenticação 
 
-from distutils.log import error
-import email
-from flask import Blueprint, flash, render_template, redirect, url_for, request
 
+from flask import Blueprint, flash, render_template, redirect, url_for, request
 from website import views
 from .models import Usuario
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
-
+from flask_login import login_user, login_required, logout_user, current_user
 
 
 
@@ -24,6 +22,7 @@ def login():
         if usuario:
             if check_password_hash(usuario.senha, senha):
                 flash('Bem vindo!', category='success')
+                login_user(usuario, remember=True)
                 return redirect(url_for('views.agenda'))
             else:
                 flash('Senha incorreta, tente novamente.', category='error')
@@ -32,8 +31,10 @@ def login():
     
     return render_template('login.html')
 
-@auth.route('/logout', methods=['POST', 'GET'])
+@auth.route('/logout')
+@login_required
 def logout():
+    logout_user()
     return redirect(url_for('views.agenda'))
 
 @auth.route('/cadastrar-usuario', methods=['POST', 'GET'])
@@ -51,7 +52,7 @@ def sign_up():
         nome = request.form.get('nome')
         senha1 = request.form.get('senha1')
         senha2 = request.form.get('senha2')
-
+        
         usuario = Usuario.query.filter_by(email=email).first()
 
         if usuario:
@@ -69,6 +70,7 @@ def sign_up():
             db.session.add(new_user)
             db.session.commit()
             flash('Conta criada! Agora faça login.', category='success')
+            login_user(usuario, remember=True)
             return redirect(url_for('auth.login'))
 
     return render_template('sign-up.html')
