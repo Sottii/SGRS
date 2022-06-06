@@ -23,13 +23,15 @@ def login():
             if check_password_hash(usuario.senha, senha):
                 flash('Bem vindo!', category='success')
                 login_user(usuario, remember=True)
+                print(email, senha)
+# TIRAR
                 return redirect(url_for('views.agenda'))
             else:
                 flash('Senha incorreta, tente novamente.', category='error')
         else:
             flash('Email não existente.', category='error')
     
-    return render_template('login.html')
+    return render_template('login.html', usuario=current_user)
 
 @auth.route('/logout')
 @login_required
@@ -37,11 +39,8 @@ def logout():
     logout_user()
     return redirect(url_for('views.agenda'))
 
-@auth.route('/cadastrar-usuario', methods=['POST', 'GET'])
-def cadastrar_usuario():
-    return render_template('cadastrar-usuario.html')
-
 @auth.route('/cadastrar-sala', methods=['POST', 'GET'])
+@login_required
 def cadastrar_sala():
     return render_template('cadastrar-sala.html')
 
@@ -69,8 +68,8 @@ def sign_up():
             new_user = Usuario(email=email, nome=nome, senha=generate_password_hash(senha1, method='sha256'))
             db.session.add(new_user)
             db.session.commit()
-            flash('Conta criada! Agora faça login.', category='success')
             login_user(usuario, remember=True)
+            flash('Conta criada! Agora faça login.', category='success')
             return redirect(url_for('auth.login'))
 
-    return render_template('sign-up.html')
+    return render_template('sign-up.html', usuario=current_user)
