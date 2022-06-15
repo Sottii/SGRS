@@ -1,5 +1,6 @@
 <#
 .Synopsis
+
 Activate a Python virtual environment for the current PowerShell session.
 
 .Description

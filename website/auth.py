@@ -1,6 +1,7 @@
 #5 coisas relacionadas à autenticação 
 
 
+from unicodedata import category
 from flask import Blueprint, flash, render_template, redirect, url_for, request
 from website import views
 from .models import Usuario
@@ -19,6 +20,7 @@ def login():
         senha = request.form.get('senha')
 
         usuario = Usuario.query.filter_by(email=email).first()
+
         if usuario:
             if check_password_hash(usuario.senha, senha):
                 flash('Bem vindo!', category='success')
@@ -35,17 +37,20 @@ def login():
 
 @auth.route('/logout')
 @login_required
+
 def logout():
     logout_user()
     return redirect(url_for('views.agenda'))
 
 @auth.route('/cadastrar-sala', methods=['POST', 'GET'])
 @login_required
+
 def cadastrar_sala():
     return render_template('cadastrar-sala.html')
 
 @auth.route('/sign-up', methods=['POST', 'GET'])
 def sign_up():
+
     if request.method == 'POST':
         email = request.form.get('email')
         nome = request.form.get('nome')
@@ -56,12 +61,19 @@ def sign_up():
 
         if usuario:
             flash('Este email já existe.', category='error')
-        elif senha1 != senha2:
-            flash('Senhas não conferem.', category='error')
-        elif len(senha1) < 8:
-            flash('Senha menor que 8 caracteres.', category='error')
+
         elif len(email) < 6:
             flash('Email muito curto.', category='error')
+
+        elif '@ifpr.edu.br'not in email:
+            flash('Email não institucional.', category='error')
+
+        elif senha1 != senha2:
+            flash('Senhas não conferem.', category='error')
+
+        elif len(senha1) < 8:
+            flash('Senha menor que 8 caracteres.', category='error')
+
         else:
             db.drop_all()
             db.create_all()
@@ -70,6 +82,7 @@ def sign_up():
             db.session.commit()
             login_user(usuario, remember=True)
             flash('Conta criada! Agora faça login.', category='success')
-            return redirect(url_for('auth.login'))
+
+        return redirect(url_for('auth.login'))
 
     return render_template('sign-up.html', usuario=current_user)
