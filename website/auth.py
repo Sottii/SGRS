@@ -32,7 +32,6 @@ def login():
                 flash('Senha incorreta, tente novamente.', category='error')
         else:
             flash('Email não existente.', category='error')
-    
     return render_template('login.html', usuario=current_user)
 
 @auth.route('/logout')
