@@ -11,6 +11,7 @@ from flask_login import login_user, login_required, logout_user, current_user
 
 
 
+
 auth = Blueprint('auth', __name__)
 
 @auth.route('/login', methods=['POST', 'GET'])
@@ -25,8 +26,9 @@ def login():
             if check_password_hash(usuario.senha, senha):
                 flash('Bem vindo!', category='success')
                 login_user(usuario, remember=True)
-                print(email, senha)
 # TIRAR
+                print(email, senha)
+
                 return redirect(url_for('views.agenda'))
             else:
                 flash('Senha incorreta, tente novamente.', category='error')
@@ -66,6 +68,7 @@ def sign_up():
 
         elif '@ifpr.edu.br'not in email:
             flash('Email não institucional.', category='error')
+            pass
 
         elif senha1 != senha2:
             flash('Senhas não conferem.', category='error')
@@ -82,6 +85,6 @@ def sign_up():
             login_user(usuario, remember=True)
             flash('Conta criada! Agora faça login.', category='success')
 
-        return redirect(url_for('auth.login'))
+            return redirect(url_for('auth.login', usuario=current_user))
 
     return render_template('sign-up.html', usuario=current_user)

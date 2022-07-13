@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, inicial-scale=1" />
-
+        
         <link
             rel="stylesheet"
             href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -27,11 +27,14 @@
             data-toggle="collapse"
             data-target="#navbar"
           >
-            <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbar">
             <div class="navbar-nav">
-              {% if usuario.is_authenticated %}
+              <style>
+                #agenda, #cadastrar-sala, #logout, #login, #sign-up {color:white;}
+              </style>
+              {% if current_user.is_authenticated %}
                 <a class="nav-item nav-link" id="agenda" href="/">Agenda</a>
                 <a class="nav-item nav-link" id="cadastrar-sala" href="/cadastrar-sala">Cadastrar Sala</a>
                 <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
