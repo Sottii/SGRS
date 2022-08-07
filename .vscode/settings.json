@@ -2,7 +2,19 @@
     "python.testing.pytestArgs": [
         "website"
     ],
+    "python:pythonPath": "/Documentos/GitHub/SGRS/MVsgrs",
     "python.testing.unittestEnabled": false,
     "python.testing.pytestEnabled": true,
     "cSpell.language": "pt-BR"
 }
+/*
+{
+    "python.testing.pytestArgs": [
+        "website"
+    ],
+    "python:pythonPath": "/Documentos/GitHub/SGRS/MVsgrs",
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "cSpell.language": "pt-BR"
+}
+*/
