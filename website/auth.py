@@ -26,8 +26,6 @@ def login():
             if check_password_hash(usuario.senha, senha):
                 flash('Bem vindo!', category='success')
                 login_user(usuario, remember=True)
-# TIRAR
-                print(email, senha)
 
                 return redirect(url_for('views.agenda'))
             else:
