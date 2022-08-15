@@ -6,6 +6,7 @@ from sqlalchemy.sql import func
 
 class Reserva(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    numero = db.Column(db.Integer, unique=True)
     usuario_id = db.Column(db.Integer, db.ForeignKey('usuario.id'))
 
 class Usuario(db.Model, UserMixin):

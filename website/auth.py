@@ -1,9 +1,5 @@
 #5 coisas relacionadas à autenticação 
-
-
-from unicodedata import category
 from flask import Blueprint, flash, render_template, redirect, url_for, request
-from website import views
 from .models import Usuario
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
