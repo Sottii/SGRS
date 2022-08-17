@@ -10,7 +10,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="reservarLabel"><br>Tem certeza que deseja sair?</h5>
+                <h5 class="modal-title" id="reservarLabel"><br>Lugar onde irá as salas disponíveis</h5>
                 <!--<ul class="list-group list-group-flush">
                     {%for reserva in current_user.reservas%}
                         <li class="list-group-item">{{note.data}}</li>
@@ -26,19 +26,20 @@
                         <div class="container  ">  
                             <div class="form-check">
                                 <h6>Tipo de sala</h6>
-                                <input class="form-check-input" type="radio" name="numero" id="numero">
-                                <label class="form-check-label" for="numero">
+                                <input class="form-check-input" type="radio" name="tipo-sala" id="tipo-sala-a">
+                                <label class="form-check-label" for="tipo-sala-a">
                                     Sala de aula
                                 </label>
-                            </div>
+                            </div> 
                         </div>
                     </div>
                 </div>
                 <br>
+                <br>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary"> <a style="color: white;" href="/logout">Sair</a></button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary"> <a style="color: white;" href="/">Criar</a></button>
             </div>
         </div>
     </div>

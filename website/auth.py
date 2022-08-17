@@ -1,6 +1,6 @@
 #5 coisas relacionadas à autenticação 
 from flask import Blueprint, flash, render_template, redirect, url_for, request
-from .models import Usuario
+from .models import Reserva, Usuario
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
 from flask_login import login_user, login_required, logout_user, current_user
@@ -40,8 +40,27 @@ def logout():
 @auth.route('/cadastrar-sala', methods=['POST', 'GET'])
 @login_required
 
-def cadastrar_sala():
-    return render_template('cadastrar-sala.html')
+    def cadastrar_sala():
+       ''' if request.method == 'POST':
+            numero = request.form.get('numero')
+            tipo_sala_l = request.form.get('tipo_sala_l')
+            
+            numero = Reserva.query.filter_by(numero=numero).first()
+
+            if numero:
+                flash('Esta email já existe.', category='error')
+
+            
+            else:
+                db.drop_all()
+                db.create_all()
+                new_user = Usuario(email=email, nome=nome, senha=generate_password_hash(senha1, method='sha256'))
+                db.session.add(new_user)
+                db.session.commit()
+                login_user(usuario, remember=True)
+                flash('Conta criada! Agora faça login.', category='success')
+''' 
+        return render_template('cadastrar-sala.html')
 
 @auth.route('/sign-up', methods=['POST', 'GET'])
 def sign_up():
