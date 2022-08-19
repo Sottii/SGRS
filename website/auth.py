@@ -1,6 +1,8 @@
 #5 coisas relacionadas à autenticação 
+from os import access
+from re import I
 from flask import Blueprint, flash, render_template, redirect, url_for, request
-from .models import Reserva, Usuario
+from .models import Reserva, Usuario, Cadastrar
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
 from flask_login import login_user, login_required, logout_user, current_user
@@ -15,6 +17,7 @@ def login():
     if request.method == 'POST':
         email = request.form.get('email')
         senha = request.form.get('senha')
+        nome = request.form.get('nome')
 
         usuario = Usuario.query.filter_by(email=email).first()
 
@@ -40,27 +43,35 @@ def logout():
 @auth.route('/cadastrar-sala', methods=['POST', 'GET'])
 @login_required
 
-    def cadastrar_sala():
-       ''' if request.method == 'POST':
+def cadastrar_sala():
+    
+        if request.method == 'POST':
             numero = request.form.get('numero')
-            tipo_sala_l = request.form.get('tipo_sala_l')
+            projetor = request.form.get('numero')
+            bloco = request.form.get('numero')
+            andar = request.form.get('numero')
+            tipo_quadro = request.form.get('numero')
+            ac = request.form.get('numero')
             
-            numero = Reserva.query.filter_by(numero=numero).first()
+            numero = Cadastrar.query.filter_by(numero=numero).first()
 
             if numero:
-                flash('Esta email já existe.', category='error')
-
+                flash('Sala já cadastrada.', category='error')
+            
+            elif projetor & bloco & andar & tipo_quadro & ac == None:
+                flash('Sala já cadastrada.', category='error')
+                
             
             else:
                 db.drop_all()
                 db.create_all()
-                new_user = Usuario(email=email, nome=nome, senha=generate_password_hash(senha1, method='sha256'))
-                db.session.add(new_user)
+                novo_cadastro = Cadastrar(numero=numero)
+                db.session.add(novo_cadastro)
                 db.session.commit()
-                login_user(usuario, remember=True)
-                flash('Conta criada! Agora faça login.', category='success')
-''' 
+                flash('Sala Cadastrada!', category='success')
+                
         return render_template('cadastrar-sala.html')
+    
 
 @auth.route('/sign-up', methods=['POST', 'GET'])
 def sign_up():
@@ -68,16 +79,21 @@ def sign_up():
     if request.method == 'POST':
         email = request.form.get('email')
         nome = request.form.get('nome')
+        tipoa = request.form.get('tipoa')
         senha1 = request.form.get('senha1')
         senha2 = request.form.get('senha2')
         
         usuario = Usuario.query.filter_by(email=email).first()
-
+        
+        if:
+            
+            
+        if tipoa.checked:
+            global i 
+            i = 1
+            
         if usuario:
             flash('Este email já existe.', category='error')
-
-        elif len(email) < 6:
-            flash('Email muito curto.', category='error')
 
         elif '@ifpr.edu.br'not in email:
             flash('Email não institucional.', category='error')

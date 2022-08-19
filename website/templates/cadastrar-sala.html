@@ -2,15 +2,16 @@
 {% block title %}Cadastrar Salas{% endblock %}
 
 {%block conteudo%}
-<form method="POST">
+
+<form action="{{ url_for('auth.cadastrar_sala') }}" method="POST">
     <div class="container">
 
         <br>
         
         <h1 align="center">Cadastrar Sala</h1>
         <div class="form-group">
-            <label for="numero">Número/Nome</label>
-            <input type="text" class="form-control" id="numero" name="numero" placeholder="Número/Nome da sala"/>
+            <label for="numero">Número</label>
+            <input type="number" min="0" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="form-control" id="numero" name="numero" placeholder="Número da sala"/>
         </div>
 
         <br>
@@ -20,11 +21,11 @@
                     <div class="container  ">  
                         <div class="form-check">
                             <h6>Tipo de sala</h6>
-                            <input class="form-check-input" type="radio" name="tipo_sala" id="tipo_sala_a">sala</input>
+                            <input class="form-check-input" type="radio" name="tipo_sala" id="tipo_sala_a" value="1">Sala de aula</input>
                             
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="tipo_sala" id="tipo_sala_l">
+                            <input class="form-check-input" type="radio" name="tipo_sala" id="tipo_sala_l" value="2">
                             <label class="form-check-label" for="tipo_sala_l">
                                 Laboratório
                             </label>
@@ -38,13 +39,13 @@
                     <div class="container  ">  
                         <div class="form-check">
                             <h6>Bloco</h6>
-                            <input class="form-check-input" type="radio" name="bloco" id="bloco1">
-                            <label class="form-check-label" for="bloco1">
+                            <input class="form-check-input" type="radio" name="bloco" id="bloco1" value="1">
+                            <label class="form-check-label" for="bloco1" >
                                 Bloco 1
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="bloco" id="bloco2">
+                            <input class="form-check-input" type="radio" name="bloco" id="bloco2" value="2">
                             <label class="form-check-label" for="bloco2">
                                 Bloco 2
                             </label>
@@ -56,13 +57,13 @@
                 <div class="container  ">  
                     <div class="form-check">
                         <h6>Andar</h6>
-                        <input class="form-check-input" type="radio" name="andar" id="andar-t">
+                        <input class="form-check-input" type="radio" name="andar" id="andar-t" value="1">
                         <label class="form-check-label" for="andar-t">
                             Térreo
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="andar" id="andar1">
+                        <input class="form-check-input" type="radio" name="andar" id="andar1" value="2">
                         <label class="form-check-label" for="andar1">
                             1° andar
                         </label>
@@ -74,19 +75,19 @@
                 <div class="container  ">
                     <div class="form-check">
                         <h6>Tipo de quadro</h6>
-                        <input class="form-check-input" type="radio" name="tipo-quadro" id="tipo-quadro-l">
+                        <input class="form-check-input" type="radio" name="tipo-quadro" id="tipo-quadro-l" value="1">
                         <label class="form-check-label" for="tipo-quadro-l">
                             Lousa
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="tipo-quadro" id="tipo-quadro-q">
+                        <input class="form-check-input" type="radio" name="tipo-quadro" id="tipo-quadro-q" value="2">
                         <label class="form-check-label" for="tipo-quadro-q">
                             Quadro negro
                         </label>
                     </div> 
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="tipo-quadro" id="tipo-quadro-n">
+                        <input class="form-check-input" type="radio" name="tipo-quadro" id="tipo-quadro-n" value="3">
                         <label class="form-check-label" for="tipo-quadro-n">
                             Não possui
                         </label>
@@ -94,42 +95,18 @@
                 </div>
             </div>
             <br>
-            <div class="col">
-                <div></div>
-                <div class="container  ">
-                    <div class="form-check">
-                        <h6>Status</h6>
-                        <input class="form-check-input" type="radio" name="status" id="status-v">
-                        <label class="form-check-label" for="status-v">
-                            Vaga
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="status" id="status-r">
-                        <label class="form-check-label" for="status-r">
-                            Reservada
-                        </label>
-                    </div> 
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="status" id="status-i">
-                        <label class="form-check-label" for="status-i">
-                            Interditada
-                        </label>
-                    </div>
-                </div>
-            </div>
             <br>
             <div class="col-auto">
                 <div class="container  ">  
                     <div class="form-check">
                         <h6>Projetor</h6>
-                        <input class="form-check-input" type="radio" name="projetor" id="projetor-p">
+                        <input class="form-check-input" type="radio" name="projetor" id="projetor-p" value="1">
                         <label class="form-check-label" for="projetor-p">
                             Possui
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="projetor" id="projetor-n">
+                        <input class="form-check-input" type="radio" name="projetor" id="projetor-n" value="2">
                         <label class="form-check-label" for="projetor-n">
                             Não possui
                         </label>
@@ -141,14 +118,14 @@
                 <div class="container  ">
                     <div class="form-check">
                         <h6>Ar-condicionado</h6>
-                        <input class="form-check-input" type="radio" name="ar-condicionado" id="ar-condicionado-p">
-                        <label class="form-check-label" for="ar-condicionado-p">
+                        <input class="form-check-input" type="radio" name="ac" id="ac-p" value="1">
+                        <label class="form-check-label" for="ac-p">
                             Possui
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="ar-condicionado" id="ar-condicionado-n">
-                        <label class="form-check-label" for="ar-condicionado-n">
+                        <input class="form-check-input" type="radio" name="ac" id="ac-n" value="2">
+                        <label class="form-check-label" for="ac-n">
                             Não possui
                         </label>
                     </div>
