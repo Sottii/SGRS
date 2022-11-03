@@ -39,9 +39,13 @@
 
               {% if current_user.is_authenticated %}
               
-                {%if i==1%}
-                  <a class="nav-item nav-link" id="cadastrar-sala" href="/cadastrar-sala">Cadastrar Sala</a>
-                {%endif%}
+                <script>
+                  if (i == 1)
+                  {
+                    <a class="nav-item nav-link" id="cadastrar-sala" href="/cadastrar-sala">Cadastrar Sala</a>
+                  }
+                </script>
+                  
                 <a class="nav-item nav-link navbarNav" data-toggle="modal" data-target="#sair" id="logout" href="/logout">Logout</a>
                   <div class="modal fade" action="/logout" id="sair" tabindex="-1" role="dialog" aria-labelledby="sairLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">

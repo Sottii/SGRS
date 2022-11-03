@@ -79,23 +79,15 @@ def sign_up():
     if request.method == 'POST':
         email = request.form.get('email')
         nome = request.form.get('nome')
-        tipoa = request.form.get('tipoa')
         senha1 = request.form.get('senha1')
         senha2 = request.form.get('senha2')
         
         usuario = Usuario.query.filter_by(email=email).first()
         
-        if:
-            
-            
-        if tipoa.checked:
-            global i 
-            i = 1
-            
         if usuario:
             flash('Este email já existe.', category='error')
 
-        elif '@ifpr.edu.br'not in email:
+        elif '@ifpr.edu.br' not in email:
             flash('Email não institucional.', category='error')
             pass
 

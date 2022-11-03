@@ -19,18 +19,27 @@
     <h6>Tipo de Usuário</h6>
     <div class="form-check">
         <div class="form-check">
-                <input class="form-check-input" type="radio" name="tipoa" id="tipop" value="1">
-                <label class="form-check-label" for="tipoa">
+                <input class="form-check-input" type="radio" name="tipo" id="tipop">
+                <label class="form-check-label" for="tipo">
                 Professor
                 </label>
         </div>
         <div class="form-check">
-                <input class="form-check-input" type="radio" name="tipo" id="tipoa" value="2">
-                <label class="form-check-label" for="tipop">
+                <input class="form-check-input" type="radio" name="tipo" id="tipoa" onclick="radio()">
+                <label class="form-check-label" for="tipo">
                 Administração
                 </label>
         </div>
     </div>
+    <script>
+        function radio() {
+            var radio = document.getElementById("tipoa");
+            var i = 0
+            if (radio.checked == true){
+              i = 1;
+            } 
+        }
+    </script>
     <br>
     <br>
     <div class="form-group">

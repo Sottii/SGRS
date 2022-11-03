@@ -20,7 +20,7 @@ class Reserva(db.Model):
 class Usuario(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(150), unique=True)
-    tipo1 = db.Column(db.Integer)
+    tipo = db.Column(db.Integer)
     nome = db.Column(db.String(150))
     senha = db.Column(db.String(150))
     reserva = db.relationship('Reserva')
